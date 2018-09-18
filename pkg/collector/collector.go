@@ -6,9 +6,9 @@ import (
 
 type Tag struct {
 	version string
-	commits []object.Commit
+	commits []*object.Commit
 }
 
 type Collector interface {
-	Collect() ([]Tag, error)
+	Collect() ([]*Tag, error)
 }
