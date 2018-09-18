@@ -8,7 +8,7 @@ import (
 
 func Test_sortVerions(t *testing.T) {
 	type args struct {
-		in []string
+		in []*version.Version
 	}
 	a, _ := version.NewVersion("0.7.1")
 	b, _ := version.NewVersion("1.1.0")
@@ -24,7 +24,7 @@ func Test_sortVerions(t *testing.T) {
 		{
 			name: "ok",
 			args: args{
-				in: []string{"1.1", "0.7.1", "1.4-beta", "1.4", "2"},
+				in: []*version.Version{b, c, d, e, a,},
 			},
 			wantOut: []*version.Version{a, b, c, d, e,},
 			wantErr: false,
@@ -32,7 +32,7 @@ func Test_sortVerions(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotOut, err := sortVerions(tt.args.in)
+			gotOut, err := SortVerions(tt.args.in)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("sortVerions() error = %v, wantErr %v", err, tt.wantErr)
 				return

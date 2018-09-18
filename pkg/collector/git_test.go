@@ -64,8 +64,6 @@ func TestGitCollector_Collect(t *testing.T) {
 			}
 			if !reflect.DeepEqual(gotTags, tt.wantTags) {
 				t.Errorf("GitCollector.Collect() = %v, want %v", gotTags, tt.wantTags)
-				//spew.Dump(gotTags)
-
 			}
 		})
 	}

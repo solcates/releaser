@@ -13,7 +13,7 @@ require (
 	github.com/magiconair/properties v1.8.0
 	github.com/mitchellh/go-homedir v1.0.0
 	github.com/pelletier/go-buffruneio v0.2.0 // indirect
-	github.com/pkg/errors v0.8.0 // indirect
+	github.com/pkg/errors v0.8.0
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/spf13/cobra v0.0.3
