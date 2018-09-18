@@ -1,7 +1,6 @@
 package collector
 
 import (
-	"github.com/davecgh/go-spew/spew"
 	"path/filepath"
 	"reflect"
 	"testing"
@@ -53,7 +52,7 @@ func TestGitCollector_Collect(t *testing.T) {
 			wantTags: []*Tag{
 
 			},
-			wantErr:  false,
+			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
@@ -65,7 +64,8 @@ func TestGitCollector_Collect(t *testing.T) {
 			}
 			if !reflect.DeepEqual(gotTags, tt.wantTags) {
 				t.Errorf("GitCollector.Collect() = %v, want %v", gotTags, tt.wantTags)
-				spew.Dump(gotTags)
+				//spew.Dump(gotTags)
+
 			}
 		})
 	}

@@ -1,6 +1,7 @@
 package collector
 
 import (
+	"fmt"
 	"gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
 	"gopkg.in/src-d/go-git.v4/plumbing/object"
@@ -48,6 +49,7 @@ func (gc *GitCollector) Collect() (tags []*Tag, err error) {
 		}
 		if err = commitRef.ForEach(func(commit *object.Commit) error {
 			t.commits = append(t.commits, commit)
+			fmt.Println(commit.Message)
 			return nil
 		}); err != nil {
 			return err
