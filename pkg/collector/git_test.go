@@ -45,9 +45,8 @@ func TestGitCollector_Collect(t *testing.T) {
 		{
 			name: "ok",
 			gc: &GitCollector{
-				reponame: "provisioner",
-				url:      "ssh://git.tesfabric.com:core/provisioner.git",
-				auth:     testAuth,
+				reponame: "releaser",
+				path:     ".",
 			},
 			wantTags: nil,
 			wantErr:  false,

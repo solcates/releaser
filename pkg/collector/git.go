@@ -5,8 +5,7 @@ import (
 	"gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
 	"gopkg.in/src-d/go-git.v4/plumbing/storer"
-	"io/ioutil"
-	"os"
+	"path/filepath"
 )
 
 type GitCollector struct {
@@ -16,6 +15,7 @@ type GitCollector struct {
 
 func NewGetCollectorForSSH(reponame, path string) (gc *GitCollector, err error) {
 
+	path, err = filepath.Abs(path)
 	gc = &GitCollector{
 		reponame: reponame,
 		path:     path,
@@ -24,14 +24,7 @@ func NewGetCollectorForSSH(reponame, path string) (gc *GitCollector, err error) 
 }
 
 func (gc *GitCollector) Collect() (tags []Tag, err error) {
-	var repoDir string
 	var repo *git.Repository
-	if repoDir, err = ioutil.TempDir("", ""); err != nil {
-		return
-	}
-
-	os.MkdirAll(repoDir, 0700)
-	defer os.RemoveAll(repoDir)
 	if repo, err = git.PlainOpen(gc.path); err != nil {
 		return
 	}
@@ -44,6 +37,5 @@ func (gc *GitCollector) Collect() (tags []Tag, err error) {
 		fmt.Println(reference.Name())
 		return nil
 	})
-
 	return
 }
