@@ -46,7 +46,7 @@ func TestGitCollector_Collect(t *testing.T) {
 			name: "ok",
 			gc: &GitCollector{
 				reponame: "releaser",
-				path:     ".",
+				path:     "/Users/scates/go/src/github.com/solcates/releaser",
 			},
 			wantTags: nil,
 			wantErr:  false,
